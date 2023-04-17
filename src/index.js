@@ -1,7 +1,16 @@
-import './style.scss';
+import "./style.scss";
+import { renderMeal } from "./modules/render";
 
-// const renderMeal=(data)=>{
-//     const div =document.createElement('div');
-//     div.classList.add('list');
-//     div.
-// }
+const mainAPI = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood";
+
+window.addEventListener("DOMContentLoaded", () => {
+  fetch(mainAPI)
+    .then((response) => response.json())
+    .then((data) => {
+      const slicedData = data.meals.slice(5, 11);
+      slicedData.forEach((list) => {
+        renderMeal(list);
+      });
+    })
+    .catch((error) => console.log(error));
+});
