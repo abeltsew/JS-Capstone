@@ -6,12 +6,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
 
 .close {
   position: absolute;
   top: 2rem;
   right: 5%;
+  font-size: 3rem;
+  cursor: pointer;
 }
 
 .open {
@@ -35,5 +38,13 @@
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: scroll;
   backdrop-filter: blur(10px);
+  height: 58rem;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

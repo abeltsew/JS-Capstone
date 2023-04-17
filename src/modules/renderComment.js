@@ -1,5 +1,6 @@
+import { baseUrl, involvementApi } from '../../config/keys.js';
+
 export default (item) => {
-  console.log(item);
   const body = document.querySelector('.container');
   const modalBG = document.createElement('div');
   modalBG.classList.add('modal');
@@ -26,6 +27,90 @@ export default (item) => {
 
   commentUI.appendChild(details);
 
+  const commments = document.createElement('div');
+  const commentsHeader = document.createElement('h2');
+
+  commments.appendChild(commentsHeader);
+
+  commentUI.appendChild(commments);
+
+  const getItemComments = async () => {
+    const response = await fetch(
+      // eslint-disable-next-line
+      `${baseUrl}apps/${involvementApi}/comments?item_id=${item.idMeal}`
+    );
+    return response.json();
+  };
+
+  let commentCount = 0;
+  getItemComments().then((comment) => {
+    commentCount = comment.length;
+    // eslint-disable-next-line
+    commentCount
+      ? (commentsHeader.innerHTML = `comments (${comment.length})`)
+      : (commentsHeader.innerHTML = 'comments (0)');
+    comment?.forEach((comment) => {
+      const p = document.createElement('p');
+      const { creation_date: date, username, comment: commentText } = comment;
+      // eslint-disable-next-line
+      p.innerHTML = date + username + ':' + commentText;
+      commments.appendChild(p);
+    });
+  });
+
+  const commentForm = document.createElement('form');
+  commentForm.classList.add('comment-form');
+
+  const h2 = document.createElement('h2');
+  h2.innerHTML = 'Add A Comment ';
+
+  const name = document.createElement('input');
+  name.type = 'text';
+  name.name = 'name';
+  name.placeholder = 'Your Name';
+
+  const comment = document.createElement('textarea');
+  comment.name = 'comment';
+  comment.placeholder = 'Your Insights';
+
+  commentForm.appendChild(h2);
+  commentForm.appendChild(name);
+  commentForm.appendChild(comment);
+
+  const addButton = document.createElement('button');
+  addButton.innerHTML = 'Comment';
+
+  addButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    await fetch(`${baseUrl}apps/${involvementApi}/comments/`, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: item.idMeal,
+        username: name.value,
+        comment: comment.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+
+    const p = document.createElement('p');
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+    p.innerHTML = `${formattedDate} ${name.value}:${comment.value}`;
+    commments.appendChild(p);
+    commentsHeader.innerHTML = `comments (${commentCount + 1})`;
+    name.value = '';
+    comment.value = '';
+  });
+
+  commentForm.appendChild(addButton);
+
+  commentUI.appendChild(commentForm);
   modalBG.appendChild(commentUI);
   modalBG.appendChild(closeButton);
 
