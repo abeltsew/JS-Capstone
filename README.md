@@ -67,9 +67,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Explore Casts**
-- **About page**
-- **Buy Tickets**
+- **Modal Detail View**
+- **Like Dishes**
+- **Comment on Dishes**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -114,13 +114,9 @@ npm install
 
 To run the project, execute the following command:
 
-<!--
-Example command:
-
 ```sh
- index.html
+ nom run start
 ```
---->
 
 ### Deployment
 
