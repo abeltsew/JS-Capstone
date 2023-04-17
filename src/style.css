@@ -36,7 +36,9 @@
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: scroll;
   backdrop-filter: blur(10px);
+  height: 58rem;
 }
 
 .comment-form {

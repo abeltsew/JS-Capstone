@@ -29,7 +29,7 @@ export default (item) => {
 
   const commments = document.createElement('div');
   const commentsHeader = document.createElement('h2');
-  commentsHeader.innerHTML = 'comments';
+
   commments.appendChild(commentsHeader);
 
   commentUI.appendChild(commments);
@@ -42,8 +42,13 @@ export default (item) => {
     return await response.json();
   };
 
+  let commentCount = 0;
   getItemComments().then((comment) => {
-    comment.forEach((comment) => {
+    commentCount = comment.length;
+    commentCount
+      ? (commentsHeader.innerHTML = `comments (${comment.length})`)
+      : (commentsHeader.innerHTML = `comments (0)`);
+    comment?.forEach((comment) => {
       const p = document.createElement('p');
       p.innerHTML = `${comment.creation_date} ${comment.username}:${comment.comment}`;
       commments.appendChild(p);
@@ -86,7 +91,18 @@ export default (item) => {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-    // clear the form filed
+
+    const p = document.createElement('p');
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+    p.innerHTML = `${formattedDate} ${name.value}:${comment.value}`;
+    commments.appendChild(p);
+    commentsHeader.innerHTML = `comments (${commentCount + 1})`;
+    name.value = '';
+    comment.value = '';
   });
 
   commentForm.appendChild(addButton);
