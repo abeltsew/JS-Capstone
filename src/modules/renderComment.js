@@ -17,11 +17,11 @@ export default (item) => {
   const closeButton = document.createElement('h2');
   closeButton.innerHTML = 'X';
   closeButton.classList.add('close');
-  closeButton.addEventListener('click', () => body.classList.toggle('open'));
+  closeButton.addEventListener('click', () => modalBG.classList.toggle('open'));
   details.classList.add('ingredient');
-  for (let i = 1; i < 5; i++) {
+  for (let i = 1; i < 5; i += 1) {
     const p = document.createElement('p');
-    p.innerHTML = `${item['strIngredient' + i]} : ${item['strMeasure' + i]}`;
+    p.innerHTML = `${item[`strIngredient${i}`]} : ${item[`strMeasure${i}`]}`;
     details.appendChild(p);
   }
 
