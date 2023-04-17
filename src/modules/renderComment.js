@@ -27,6 +27,29 @@ export default (item) => {
 
   commentUI.appendChild(details);
 
+  const commments = document.createElement('div');
+  const commentsHeader = document.createElement('h2');
+  commentsHeader.innerHTML = 'comments';
+  commments.appendChild(commentsHeader);
+
+  commentUI.appendChild(commments);
+
+  const getItemComments = async () => {
+    const response = await fetch(
+      `${baseUrl}apps/${involvementApi}/comments?item_id=${item.idMeal}
+        `
+    );
+    return await response.json();
+  };
+
+  getItemComments().then((comment) => {
+    comment.forEach((comment) => {
+      const p = document.createElement('p');
+      p.innerHTML = `${comment.creation_date} ${comment.username}:${comment.comment}`;
+      commments.appendChild(p);
+    });
+  });
+
   const commentForm = document.createElement('form');
   commentForm.classList.add('comment-form');
 
@@ -63,6 +86,7 @@ export default (item) => {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
+    // clear the form filed
   });
 
   commentForm.appendChild(addButton);
