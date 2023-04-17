@@ -1,8 +1,8 @@
-const main = document.querySelector(".main");
+const main = document.querySelector('.main');
 const renderMeal = (item) => {
-    const div = document.createElement("div");
-    div.classList.add("list");
-    div.innerHTML = `
+  const div = document.createElement('div');
+  div.classList.add('list');
+  div.innerHTML = `
       <div class="image">
       <img
         src="${item.strMealThumb}" alt=""
@@ -21,6 +21,10 @@ const renderMeal = (item) => {
     </div>
     <button class="like" id= "${item.idMeal}">See More</button>
   `;
-    main.append(div);
-  };
-  export {renderMeal}
+  main.append(div);
+
+  const detailsBtn = document.getElementById(item.idMeal);
+
+  detailsBtn.addEventListener('click', () => {});
+};
+export default renderMeal;
