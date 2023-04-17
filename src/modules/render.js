@@ -1,4 +1,4 @@
-import renderComment from './renderComment';
+import renderComment from './renderComment.js';
 
 const main = document.querySelector('.main');
 const renderMeal = (item) => {
@@ -29,7 +29,7 @@ const renderMeal = (item) => {
 
   detailsBtn.addEventListener('click', async () => {
     const response = await fetch(
-      `http://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`
+      `http://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`,
     );
     const result = await response.json();
 
