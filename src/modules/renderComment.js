@@ -1,13 +1,17 @@
 import { baseUrl, involvementApi } from '../../config/keys.js';
 import getItemComments from './getCommentItems.js';
 
-export const updateCommentCount = (comment, commentsHeader) => {
+let commentList = [];
+
+export const updateCommentCount = (comment, commentsHeader, add) => {
   if (comment) {
     commentsHeader.innerHTML = `comments (${comment.length})`;
-  } else {
+  }
+  if (add) {
     commentsHeader.innerHTML = `comments (${
       (comment.length ? comment.length : 0) + 1
     })`;
+    commentList = [...commentList, comment];
   }
 };
 
@@ -46,6 +50,7 @@ export default (item) => {
   commentUI.appendChild(commments);
 
   getItemComments(item).then((comment) => {
+    commentList = comment;
     updateCommentCount(comment, commentsHeader);
 
     comment?.forEach((comment) => {
@@ -102,7 +107,8 @@ export default (item) => {
     const formattedDate = `${year}-${month}-${day}`;
     p.innerHTML = `${formattedDate} ${name.value}:${comment.value}`;
     commments.appendChild(p);
-    updateCommentCount(false, commentsHeader);
+
+    updateCommentCount(commentList, commentsHeader, true);
     name.value = '';
     comment.value = '';
   });
