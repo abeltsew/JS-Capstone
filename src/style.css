@@ -1,0 +1,39 @@
+.comment-container {
+  position: absolute;
+  top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  position: absolute;
+  top: 2rem;
+  right: 5%;
+}
+
+.open {
+  display: none;
+}
+
+.comment-container img {
+  height: 21rem;
+  width: 65%;
+}
+
+.ingredient {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+}
