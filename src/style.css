@@ -37,3 +37,9 @@
   bottom: 0;
   backdrop-filter: blur(10px);
 }
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

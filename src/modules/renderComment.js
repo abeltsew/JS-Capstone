@@ -1,5 +1,6 @@
+import { baseUrl, involvementApi } from '../../config/keys';
+
 export default (item) => {
-  console.log(item);
   const body = document.querySelector('.container');
   const modalBG = document.createElement('div');
   modalBG.classList.add('modal');
@@ -26,6 +27,47 @@ export default (item) => {
 
   commentUI.appendChild(details);
 
+  const commentForm = document.createElement('form');
+  commentForm.classList.add('comment-form');
+
+  const h2 = document.createElement('h2');
+  h2.innerHTML = `Add A Comment `;
+
+  const name = document.createElement('input');
+  name.type = 'text';
+  name.name = 'name';
+  name.placeholder = 'Your Name';
+
+  const comment = document.createElement('textarea');
+  comment.name = 'comment';
+  comment.placeholder = 'Your Insights';
+
+  commentForm.appendChild(h2);
+  commentForm.appendChild(name);
+  commentForm.appendChild(comment);
+
+  const addButton = document.createElement('button');
+  addButton.innerHTML = 'Comment';
+
+  addButton?.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const response = await fetch(`${baseUrl}apps/${involvementApi}/comments/`, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: item.idMeal,
+        username: name.value,
+        comment: comment.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+  });
+
+  commentForm.appendChild(addButton);
+
+  commentUI.appendChild(commentForm);
   modalBG.appendChild(commentUI);
   modalBG.appendChild(closeButton);
 
