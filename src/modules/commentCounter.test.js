@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-import mockHtml from '../__mocks__/mockHtml.js';
 import { updateCommentCount } from './renderComment.js';
 
 describe('Should render the exact comments count', () => {
