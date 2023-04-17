@@ -1,4 +1,6 @@
 import './style.scss';
+import './style.css';
+
 import renderMeal from './modules/render.js';
 
 const mainAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
