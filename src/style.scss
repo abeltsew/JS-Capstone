@@ -1,3 +1,6 @@
+$first-color: white;
+$fifth-color: red;
+
 * {
   padding: 0;
   margin: 0;
@@ -17,13 +20,47 @@ nav {
 
     a {
       display: block;
-      color: white;
+      color: $first-color;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
 
       &:hover {
         background-color: #111;
+      }
+    }
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 100px;
+  padding: 50px 100px;
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    button {
+      background-color: inherit;
+      border: 1px solid $first-color;
+
+      &:hover {
+        cursor: pointer;
+        color: $fifth-color;
       }
     }
   }
