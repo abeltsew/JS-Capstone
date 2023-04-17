@@ -13,6 +13,8 @@
   position: absolute;
   top: 2rem;
   right: 5%;
+  font-size: 3rem;
+  cursor: pointer;
 }
 
 .open {

@@ -1,4 +1,4 @@
-import { baseUrl, involvementApi } from '../../config/keys';
+import { baseUrl, involvementApi } from '../../config/keys.js';
 
 export default (item) => {
   const body = document.querySelector('.container');
@@ -36,21 +36,24 @@ export default (item) => {
 
   const getItemComments = async () => {
     const response = await fetch(
-      `${baseUrl}apps/${involvementApi}/comments?item_id=${item.idMeal}
-        `
+      // eslint-disable-next-line
+      `${baseUrl}apps/${involvementApi}/comments?item_id=${item.idMeal}`
     );
-    return await response.json();
+    return response.json();
   };
 
   let commentCount = 0;
   getItemComments().then((comment) => {
     commentCount = comment.length;
+    // eslint-disable-next-line
     commentCount
       ? (commentsHeader.innerHTML = `comments (${comment.length})`)
-      : (commentsHeader.innerHTML = `comments (0)`);
+      : (commentsHeader.innerHTML = 'comments (0)');
     comment?.forEach((comment) => {
       const p = document.createElement('p');
-      p.innerHTML = `${comment.creation_date} ${comment.username}:${comment.comment}`;
+      const { creation_date: date, username, comment: commentText } = comment;
+      // eslint-disable-next-line
+      p.innerHTML = date + username + ':' + commentText;
       commments.appendChild(p);
     });
   });
@@ -59,7 +62,7 @@ export default (item) => {
   commentForm.classList.add('comment-form');
 
   const h2 = document.createElement('h2');
-  h2.innerHTML = `Add A Comment `;
+  h2.innerHTML = 'Add A Comment ';
 
   const name = document.createElement('input');
   name.type = 'text';
@@ -77,10 +80,10 @@ export default (item) => {
   const addButton = document.createElement('button');
   addButton.innerHTML = 'Comment';
 
-  addButton?.addEventListener('click', async (e) => {
+  addButton.addEventListener('click', async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`${baseUrl}apps/${involvementApi}/comments/`, {
+    await fetch(`${baseUrl}apps/${involvementApi}/comments/`, {
       method: 'POST',
       body: JSON.stringify({
         item_id: item.idMeal,
