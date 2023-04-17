@@ -1,4 +1,19 @@
 import { baseUrl, involvementApi } from '../../config/keys.js';
+import getItemComments from './getCommentItems.js';
+
+let commentList = [];
+
+export const updateCommentCount = (comment, commentsHeader, add) => {
+  if (comment) {
+    commentsHeader.innerHTML = `comments (${comment.length})`;
+  }
+  if (add) {
+    commentsHeader.innerHTML = `comments (${
+      (comment.length ? comment.length : 0) + 1
+    })`;
+    commentList = [...commentList, comment];
+  }
+};
 
 export default (item) => {
   const body = document.querySelector('.container');
@@ -34,21 +49,10 @@ export default (item) => {
 
   commentUI.appendChild(commments);
 
-  const getItemComments = async () => {
-    const response = await fetch(
-      // eslint-disable-next-line
-      `${baseUrl}apps/${involvementApi}/comments?item_id=${item.idMeal}`
-    );
-    return response.json();
-  };
+  getItemComments(item).then((comment) => {
+    commentList = comment;
+    updateCommentCount(comment, commentsHeader);
 
-  let commentCount = 0;
-  getItemComments().then((comment) => {
-    commentCount = comment.length;
-    // eslint-disable-next-line
-    commentCount
-      ? (commentsHeader.innerHTML = `comments (${comment.length})`)
-      : (commentsHeader.innerHTML = 'comments (0)');
     comment?.forEach((comment) => {
       const p = document.createElement('p');
       const { creation_date: date, username, comment: commentText } = comment;
@@ -103,7 +107,8 @@ export default (item) => {
     const formattedDate = `${year}-${month}-${day}`;
     p.innerHTML = `${formattedDate} ${name.value}:${comment.value}`;
     commments.appendChild(p);
-    commentsHeader.innerHTML = `comments (${commentCount + 1})`;
+
+    updateCommentCount(commentList, commentsHeader, true);
     name.value = '';
     comment.value = '';
   });
