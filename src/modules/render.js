@@ -1,4 +1,4 @@
-import { postLike } from './likeAPI.js';
+import { fetchLikes, postLike } from './likeAPI.js';
 import renderComment from './renderComment.js';
 
 const main = document.querySelector('.main');
@@ -18,15 +18,14 @@ const renderMeal = async (item) => {
      
       </h5>
       
-             <button class="btn-like" id= "${item.idMeal}">
-             <i class="far fa-heart fa-2x"></i><span id= "likes${item.idMeal}">10</span>
+     <button class="btn-like" id= "${item.idMeal}">
+      <i class="far fa-heart fa-2x"></i><span id= "likes${item.idMeal}">10</span>
         </button>
   
     </div>
     <button class="like" data-id= "${item.idMeal}">See More</button>
   `;
   main.append(div);
-  // Add event listener to the like button
   const likeBtn = div.querySelector('.btn-like');
   likeBtn.addEventListener('click', () => {
     const itemId = likeBtn.getAttribute('id');
@@ -47,5 +46,12 @@ const renderMeal = async (item) => {
     renderComment(result.meals[0]);
   });
 };
-
-export default { renderMeal };
+const renderLike = async (id) => {
+  const likes = await fetchLikes();
+  likes.forEach((element) => {
+    if (element.item_id === id) {
+      document.getElementById(`likes${id}`).innerHTML = element.likes;
+    }
+  });
+};
+export { renderMeal, renderLike };
