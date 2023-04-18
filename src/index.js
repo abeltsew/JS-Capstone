@@ -1,7 +1,7 @@
 import './style.scss';
 import './style.css';
 
-import {renderLike, renderMeal} from './modules/render.js';
+import { renderLike, renderMeal } from './modules/render.js';
 
 const mainAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 
