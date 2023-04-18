@@ -23,11 +23,11 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Leaderboard <a name="about-project"></a>
+# 📖 Sea Food <a name="about-project"></a>
 
-> This site is built as part of an exercise at Microverse. The site is about a Leaderboard
+> This site is built as part of an exercise at Microverse. The site is about a Sea Food
 
-**The Leaderboard project** i
+**The Sea Food project** i
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -67,9 +67,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Explore Casts**
-- **About page**
-- **Buy Tickets**
+- **Modal Detail View**
+- **Like Dishes**
+- **Comment on Dishes**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -77,7 +77,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo](https://abeltsew.github.io/Leaderboard/)
+- [Live Demo](https://abeltsew.github.io/JS-Capstone/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,7 +99,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/abeltsew/Leaderboard.git
+  git clone https://github.com/abeltsew/JS-Capstone.git
 ```
 
 -
@@ -114,13 +114,9 @@ npm install
 
 To run the project, execute the following command:
 
-<!--
-Example command:
-
 ```sh
- index.html
+ nom run start
 ```
---->
 
 ### Deployment
 
@@ -137,6 +133,12 @@ You can deploy this project using github pages
 - GitHub: [@githubhandle](https://github.com/abeltsew)
 - Twitter: [@twitterhandle](https://twitter.com/abeltsew)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/abeltsew)
+
+👤 **Author: Abdi Bekele**
+
+- GitHub: [@githubhandle](https://github.com/Lul-Abdifan)
+- Twitter: [@twitterhandle](https://twitter.com/AbdiBekele68808)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/abdi-bekele-a63860254/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
