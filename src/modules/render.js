@@ -16,7 +16,7 @@ const renderMeal = (item) => {
      
       </h5>
       
-        <button class="like" >
+        <button class="like-btn" id= "${item.idMeal}">
            <i class="far fa-heart fa-2x"></i><span>10</span>
         </button>
   
@@ -36,5 +36,7 @@ const renderMeal = (item) => {
     renderComment(result.meals[0]);
   });
 };
+
+
 
 export default renderMeal;
