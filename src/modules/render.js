@@ -21,11 +21,11 @@ const renderMeal = (item) => {
         </button>
   
     </div>
-    <button class="like" id= "${item.idMeal}">See More</button>
+    <button class="like" data-id= "${item.idMeal}">See More</button>
   `;
   main.append(div);
 
-  const detailsBtn = document.getElementById(item.idMeal);
+  const detailsBtn = document.querySelector(`[data-id= "${item.idMeal}"]`);
 
   detailsBtn.addEventListener('click', async () => {
     const response = await fetch(
