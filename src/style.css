@@ -7,12 +7,14 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  padding-bottom: 3rem;
 }
 
 .close {
-  position: absolute;
+  position: sticky;
   top: 2rem;
-  right: 5%;
+  left: 100%;
+  margin-right: -90%;
   font-size: 3rem;
   cursor: pointer;
 }
@@ -35,14 +37,13 @@
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   overflow: scroll;
   backdrop-filter: blur(10px);
-  height: 58rem;
 }
 
 .comment-form {
