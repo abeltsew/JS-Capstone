@@ -107,10 +107,9 @@ export default (item) => {
     const formattedDate = `${year}-${month}-${day}`;
     p.innerHTML = `${formattedDate} ${name.value}:${comment.value}`;
     commments.appendChild(p);
-
-    updateCommentCount(commentList, commentsHeader, true);
     name.value = '';
     comment.value = '';
+    updateCommentCount(commentList, commentsHeader, true);
   });
 
   commentForm.appendChild(addButton);
