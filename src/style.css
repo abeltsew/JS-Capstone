@@ -30,6 +30,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  width: 49%;
+  column-gap: 20%;
 }
 
 .modal {
