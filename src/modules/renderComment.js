@@ -8,7 +8,7 @@ export const updateCommentCount = (comment, commentsHeader, add) => {
   if (!comment.error && add !== true) {
     commentsHeader.innerHTML = `comments (${comment.length})`;
   } else if (add === undefined) {
-    commentsHeader.innerHTML = `comments (0)`;
+    commentsHeader.innerHTML = 'comments (0)';
   }
   if (add) {
     if (!comment.error) {
@@ -58,6 +58,7 @@ export default (item) => {
   commentUI.appendChild(commments);
 
   getItemComments(item).then((comment) => {
+    // eslint-disable-next-line
     !comment.error ? (commentList = comment) : [];
     updateCommentCount(comment, commentsHeader);
 
