@@ -1,11 +1,10 @@
-import './style.scss';
-import './style.css';
+import "./style.scss";
 
-import { renderLike, renderMeal } from './modules/render.js';
+import { renderLike, renderMeal } from "./modules/render.js";
 
-const mainAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
+const mainAPI = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood";
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
   fetch(mainAPI)
     .then((response) => response.json())
     .then((data) => {
