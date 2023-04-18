@@ -1,7 +1,7 @@
 import './style.scss';
 import './style.css';
 
-import renderMeal from './modules/render.js';
+import {renderLike, renderMeal} from './modules/render.js';
 
 const mainAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 
@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const slicedData = data.meals.slice(5, 11);
       slicedData.forEach((list) => {
         renderMeal(list);
+        renderLike(list.idMeal);
       });
     })
     .catch((error) => {
