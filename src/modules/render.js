@@ -27,14 +27,7 @@ const renderMeal = async (item) => {
   `;
   main.append(div);
   // Add event listener to the like button
-  const likeBtn = div.querySelector('.btn-like');
-  likeBtn.addEventListener('click', () => {
-    const itemId = likeBtn.getAttribute('id');
-    const likeCount = parseInt(likeBtn.querySelector('span').textContent, 10);
-    likeBtn.querySelector('span').textContent = likeCount + 1;
 
-    postLike(itemId);
-  });
 
   const detailsBtn = document.querySelector(`[data-id= "${item.idMeal}"]`);
 
