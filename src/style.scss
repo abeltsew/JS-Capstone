@@ -66,10 +66,33 @@ nav {
   }
 }
 
+
 .footer {
-  height: 2rem;
-  border-top: solid 1px rgb(128, 128, 128);
-  padding: 1rem;
-  font-size: 0.8rem;
-  color: rgb(128, 128, 128);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: $first-color;
+padding:10px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .fab {
+      margin-left: 5px;
+    }
+  }
+}
+
+@media (max-width: 745px) {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
