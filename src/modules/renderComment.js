@@ -4,14 +4,22 @@ import getItemComments from './getCommentItems.js';
 let commentList = [];
 
 export const updateCommentCount = (comment, commentsHeader, add) => {
-  if (comment) {
+  console.log({ comment, add, commentList });
+  if (!comment.error && add !== true) {
     commentsHeader.innerHTML = `comments (${comment.length})`;
+  } else if (add === undefined) {
+    commentsHeader.innerHTML = `comments (0)`;
   }
   if (add) {
-    commentsHeader.innerHTML = `comments (${
-      (comment.length ? comment.length : 0) + 1
-    })`;
-    commentList = [...commentList, comment];
+    if (!comment.error) {
+      commentsHeader.innerHTML = `comments (${
+        (comment.length ? comment.length : 0) + 1
+      })`;
+      commentList.push(comment);
+    } else {
+      commentList.push('comment');
+      commentsHeader.innerHTML = `comments (${commentList.length})`;
+    }
   }
 };
 
@@ -50,7 +58,7 @@ export default (item) => {
   commentUI.appendChild(commments);
 
   getItemComments(item).then((comment) => {
-    commentList = comment;
+    !comment.error ? (commentList = comment) : [];
     updateCommentCount(comment, commentsHeader);
 
     comment?.forEach((comment) => {
