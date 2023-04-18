@@ -1,10 +1,10 @@
+import { postLike } from './likeAPI.js';
+import renderComment from './renderComment.js';
 
-import renderComment from "./renderComment.js";
-import { postLike } from "./likeAPI.js";
-const main = document.querySelector(".main");
+const main = document.querySelector('.main');
 const renderMeal = async (item) => {
-  const div = document.createElement("div");
-  div.classList.add("list");
+  const div = document.createElement('div');
+  div.classList.add('list');
 
   div.innerHTML = `
       <div class="image">
@@ -27,20 +27,20 @@ const renderMeal = async (item) => {
   `;
   main.append(div);
   // Add event listener to the like button
-  const likeBtn = div.querySelector(".btn-like");
-  likeBtn.addEventListener("click", () => {
-    const itemId = likeBtn.getAttribute("id");
-    const likeCount = parseInt(likeBtn.querySelector("span").textContent);
-    likeBtn.querySelector("span").textContent = likeCount + 1;
+  const likeBtn = div.querySelector('.btn-like');
+  likeBtn.addEventListener('click', () => {
+    const itemId = likeBtn.getAttribute('id');
+    const likeCount = parseInt(likeBtn.querySelector('span').textContent, 10);
+    likeBtn.querySelector('span').textContent = likeCount + 1;
 
     postLike(itemId);
   });
 
   const detailsBtn = document.querySelector(`[data-id= "${item.idMeal}"]`);
 
-  detailsBtn.addEventListener("click", async () => {
+  detailsBtn.addEventListener('click', async () => {
     const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`,
     );
     const result = await response.json();
 
@@ -48,4 +48,4 @@ const renderMeal = async (item) => {
   });
 };
 
-export { renderMeal};
+export default { renderMeal };
