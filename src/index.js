@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
   fetch(mainAPI)
     .then((response) => response.json())
     .then((data) => {
-      const slicedData = data.meals.slice(5, 11);
+      const slicedData = data.meals.slice(0, 24);
 
       slicedData.forEach((list) => {
         renderMeal(list);

@@ -66,7 +66,7 @@ export default (item) => {
       const p = document.createElement('p');
       const { creation_date: date, username, comment: commentText } = comment;
       // eslint-disable-next-line
-      p.innerHTML = date + username + ':' + commentText;
+      p.innerHTML = date + ' ' + '👤' + username + ' 💬 ' + commentText;
       commments.appendChild(p);
     });
   });
@@ -114,7 +114,7 @@ export default (item) => {
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
-    p.innerHTML = `${formattedDate} ${name.value}:${comment.value}`;
+    p.innerHTML = `${formattedDate} 👤 ${name.value} 💬 ${comment.value}`;
     commments.appendChild(p);
     name.value = '';
     comment.value = '';

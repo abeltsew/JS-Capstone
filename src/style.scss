@@ -34,18 +34,24 @@ nav {
 
 .main {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 100px;
-  padding: 50px 100px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 4rem;
+  padding: 1rem 2rem;
 
   .list {
     display: flex;
     flex-direction: column;
-    width: 300px;
 
     img {
       width: 100%;
+      align-self: center;
       height: auto;
+      border-radius: 1rem;
+      transition: all 0.8s ease-in-out;
+
+      &:hover {
+        scale: 1.1;
+      }
     }
 
     .description {
