@@ -4,7 +4,6 @@ import getItemComments from './getCommentItems.js';
 let commentList = [];
 
 export const updateCommentCount = (comment, commentsHeader, add) => {
-  console.log({ comment, add, commentList });
   if (!comment.error && add !== true) {
     commentsHeader.innerHTML = `comments (${comment.length})`;
   } else if (add === undefined) {
