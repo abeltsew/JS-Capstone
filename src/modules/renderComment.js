@@ -97,7 +97,7 @@ export default (item) => {
     updateCommentCount(
       { formattedDate, name: name.value, comment: comment.value },
       commentsHeader,
-      true
+      true,
     );
   });
 
