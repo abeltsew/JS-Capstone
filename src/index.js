@@ -1,11 +1,14 @@
 import './style.scss';
 import './style.css';
 
-import { renderLike, renderMeal } from './modules/render.js';
+import renderMeal from './modules/render.js';
+import renderLike from './modules/likeRender.js';
+import { fetchLikes } from './modules/likeAPI.js';
 
 const mainAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 const itemCounter = document.querySelector('#counter');
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
+  const likes = fetchLikes();
   fetch(mainAPI)
     .then((response) => response.json())
     .then((data) => {
@@ -13,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       slicedData.forEach((list) => {
         renderMeal(list);
-        renderLike(list.idMeal);
+        renderLike(list.idMeal, likes);
       });
       itemCounter.innerHTML = `Food(${slicedData.length})`;
     })
