@@ -1,4 +1,5 @@
 $first-color: white;
+$second-color:#333;
 $fifth-color: red;
 
 * {
@@ -7,7 +8,7 @@ $fifth-color: red;
 }
 
 nav {
-  background-color: #333;
+  background-color: $second-color;
   overflow: hidden;
 
   ul {
@@ -19,7 +20,7 @@ nav {
     gap: 100px;
 
     &:hover {
-      background-color: #111;
+      background-color: $second-color;
     }
   }
 }
@@ -77,7 +78,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #333;
+  background-color: $second-color;
   color: var(--first-color);
   padding: 10px;
 
@@ -91,15 +92,17 @@ a {
     }
   }
 }
+
 .like {
-  background-color: burlywood  !important;
+  background-color: burlywood !important;
   width: 100px;
-  padding:5px;
+  padding: 5px;
   align-self: center;
   border-radius: 0.8rem;
 }
-.like:hover{
+
+.like:hover {
   font-weight: bolder;
   background-color: rgb(135, 222, 174) !important;
-  color: #da2929 !important
+  color: #da2929 !important;
 }
