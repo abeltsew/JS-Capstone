@@ -39,7 +39,7 @@ const renderMeal = async (item) => {
 
   detailsBtn.addEventListener('click', async () => {
     const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`,
     );
     const result = await response.json();
 
