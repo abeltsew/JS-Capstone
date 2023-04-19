@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { updateCommentCount } from '../src/modules/renderComment.js';
+import updateCommentCount from '../src/modules/updateCommentCount.js';
 
 describe('Should render the exact comments count', () => {
   it('Should render one comment in the list', () => {
