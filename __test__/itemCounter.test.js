@@ -9,7 +9,7 @@ describe('itemCounters', () => {
     const JsonItems = [];
     const itemCounter = document.createElement('li');
     itemCounters(JsonItems, itemCounter);
-        expect(itemCounter.innerHTML).toBe(`Food(0)`);
+    expect(itemCounter.innerHTML).toBe('Food(0)');
   });
   test('Counts the correct items', () => {
     const itemCounter = document.createElement('li');
