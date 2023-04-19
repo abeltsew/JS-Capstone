@@ -45,8 +45,7 @@ export default (item) => {
         username,
         comment: commentText,
       } = eachComment;
-
-      p.innerHTML = `${date} 👤  ${username}+ 💬  + ${commentText}`;
+      p.innerHTML = `${date} 👤 ${username} 💬 ${commentText}`;
       commments.appendChild(p);
     });
   });
