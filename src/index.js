@@ -9,6 +9,9 @@ const mainAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 const itemCounter = document.querySelector('#counter');
 window.addEventListener('DOMContentLoaded', async () => {
   const likes = fetchLikes();
+  const itemCounters = (items) => {
+    itemCounter.innerHTML = `Food(${items.length})`;
+  };
   fetch(mainAPI)
     .then((response) => response.json())
     .then((data) => {
@@ -18,7 +21,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         renderMeal(list);
         renderLike(list.idMeal, likes);
       });
-      itemCounter.innerHTML = `Food(${slicedData.length})`;
+      itemCounters(slicedData);
     })
     .catch((error) => {
       throw new Error(error);
