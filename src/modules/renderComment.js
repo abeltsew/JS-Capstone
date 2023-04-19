@@ -38,11 +38,15 @@ export default (item) => {
 
   getItemComments(item).then((comment) => {
     updateCommentCount(comment, commentsHeader);
-    comment?.forEach((comment) => {
+    comment.forEach((eachComment) => {
       const p = document.createElement('p');
-      const { creation_date: date, username, comment: commentText } = comment;
-      // eslint-disable-next-line
-      p.innerHTML = date + ' ' + '👤' + username + ' 💬 ' + commentText;
+      const {
+        creation_date: date,
+        username,
+        comment: commentText,
+      } = eachComment;
+
+      p.innerHTML = `${date} 👤  ${username}+ 💬  + ${commentText}`;
       commments.appendChild(p);
     });
   });
@@ -97,7 +101,7 @@ export default (item) => {
     updateCommentCount(
       { formattedDate, name: name.value, comment: comment.value },
       commentsHeader,
-      true,
+      true
     );
   });
 
