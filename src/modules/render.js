@@ -1,4 +1,4 @@
-import { fetchLikes, postLike } from './likeAPI.js';
+import { postLike } from './likeAPI.js';
 import renderComment from './renderComment.js';
 
 const main = document.querySelector('.main');
@@ -46,12 +46,14 @@ const renderMeal = async (item) => {
     renderComment(result.meals[0]);
   });
 };
-const renderLike = async (id) => {
-  const likes = await fetchLikes();
-  likes.forEach((element) => {
-    if (element.item_id === id) {
-      document.getElementById(`likes${id}`).innerHTML = element.likes;
-    }
+
+const renderLike = async (id, likes) => {
+  likes.then((data) => {
+    data.forEach((element) => {
+      if (element.item_id === id) {
+        document.getElementById(`likes${id}`).innerHTML = element.likes;
+      }
+    });
   });
 };
 export { renderMeal, renderLike };

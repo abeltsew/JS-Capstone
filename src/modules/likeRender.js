@@ -1,11 +1,10 @@
-import { fetchLikes } from './likeAPI.js';
-
-const renderLike = async (id) => {
-  const likes = await fetchLikes();
-  likes.forEach((element) => {
-    if (element.item_id === id) {
-      document.getElementById(`likes${id}`).innerHTML = element.likes;
-    }
+const renderLike = async (id, likes) => {
+  likes.then((data) => {
+    data.forEach((element) => {
+      if (element.item_id === id) {
+        document.getElementById(`likes${id}`).innerHTML = element.likes;
+      }
+    });
   });
 };
 export default { renderLike };
