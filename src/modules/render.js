@@ -19,7 +19,7 @@ const renderMeal = async (item) => {
       </h5>
       
      <button class="btn-like" id= "${item.idMeal}">
-      <i class="far fa-heart fa-2x"></i><span id= "likes${item.idMeal}">10</span>
+      <i class="far fa-heart fa-2x"></i><span id= "likes${item.idMeal}">0</span>
         </button>
   
     </div>
@@ -39,7 +39,7 @@ const renderMeal = async (item) => {
 
   detailsBtn.addEventListener('click', async () => {
     const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`,
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`
     );
     const result = await response.json();
 
