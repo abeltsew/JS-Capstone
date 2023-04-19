@@ -1,0 +1,108 @@
+$first-color: white;
+$second-color: #333;
+$fifth-color: red;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color: $second-color;
+  overflow: hidden;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+
+    &:hover {
+      background-color: $second-color;
+    }
+  }
+}
+
+a {
+  display: block;
+  color: $first-color;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 4rem;
+  padding: 2rem 2rem;
+
+  .list {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      align-self: center;
+      height: auto;
+      border-radius: 1rem;
+      transition: all 0.8s ease-in-out;
+
+      &:hover {
+        scale: 1.1;
+      }
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+    }
+
+    button {
+      background-color: inherit;
+      border: 1px solid $first-color;
+
+      &:hover {
+        cursor: pointer;
+        color: $fifth-color;
+      }
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $second-color;
+  color: #ea3737;
+  padding: 10px;
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .fab {
+      margin-left: 5px;
+    }
+  }
+}
+
+.like {
+  background-color: burlywood !important;
+  width: 100px;
+  padding: 5px;
+  align-self: center;
+  border-radius: 0.8rem;
+}
+
+.like:hover {
+  font-weight: bolder;
+  background-color: rgb(135, 222, 174) !important;
+  color: #da2929 !important;
+}

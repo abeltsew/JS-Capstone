@@ -1,0 +1,71 @@
+.comment-container {
+  position: absolute;
+  top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 3rem;
+}
+
+.close {
+  position: sticky;
+  top: 2rem;
+  left: 100%;
+  margin-right: -90%;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.open {
+  display: none;
+}
+
+.comment-container img {
+  height: 21rem;
+  width: 65%;
+}
+
+.ingredient {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 49%;
+  column-gap: 20%;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: scroll;
+  backdrop-filter: blur(20px);
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input,
+textarea {
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  border: none;
+  width: 30vw;
+  background-color: rgb(231, 214, 192);
+}
+
+form button {
+  background-color: orangered;
+  padding: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 0.8rem;
+  border: none;
+}
