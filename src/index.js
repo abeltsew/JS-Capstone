@@ -1,8 +1,9 @@
 import './style.scss';
 import './style.css';
 
-import { renderLike, renderMeal } from './modules/render.js';
-import { fetchLikes } from './modules/likeAPI';
+import renderMeal from './modules/render.js';
+import renderLike from './modules/likeRender.js';
+import { fetchLikes } from './modules/likeAPI.js';
 
 const mainAPI = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 const itemCounter = document.querySelector('#counter');

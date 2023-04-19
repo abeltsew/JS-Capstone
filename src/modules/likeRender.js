@@ -7,4 +7,4 @@ const renderLike = async (id, likes) => {
     });
   });
 };
-export default { renderLike };
+export default renderLike;
