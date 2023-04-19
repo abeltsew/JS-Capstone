@@ -1,26 +1,6 @@
 import { baseUrl, involvementApi } from '../../config/keys.js';
 import getItemComments from './getCommentItems.js';
-
-let commentList = [];
-
-export const updateCommentCount = (comment, commentsHeader, add) => {
-  if (!comment.error && add !== true) {
-    commentsHeader.innerHTML = `comments (${comment.length})`;
-  } else if (add === undefined) {
-    commentsHeader.innerHTML = 'comments (0)';
-  }
-  if (add) {
-    if (!comment.error) {
-      commentsHeader.innerHTML = `comments (${
-        (comment.length ? comment.length : 0) + 1
-      })`;
-      commentList.push(comment);
-    } else {
-      commentList.push('comment');
-      commentsHeader.innerHTML = `comments (${commentList.length})`;
-    }
-  }
-};
+import updateCommentCount from './updateCommentCount.js';
 
 export default (item) => {
   const body = document.querySelector('.container');
@@ -57,15 +37,16 @@ export default (item) => {
   commentUI.appendChild(commments);
 
   getItemComments(item).then((comment) => {
-    // eslint-disable-next-line
-    !comment.error ? (commentList = comment) : [];
     updateCommentCount(comment, commentsHeader);
-
-    comment?.forEach((comment) => {
+    comment.forEach((eachComment) => {
       const p = document.createElement('p');
-      const { creation_date: date, username, comment: commentText } = comment;
-      // eslint-disable-next-line
-      p.innerHTML = date + ' ' + '👤' + username + ' 💬 ' + commentText;
+      const {
+        creation_date: date,
+        username,
+        comment: commentText,
+      } = eachComment;
+
+      p.innerHTML = `${date} 👤  ${username}+ 💬  + ${commentText}`;
       commments.appendChild(p);
     });
   });
@@ -117,7 +98,11 @@ export default (item) => {
     commments.appendChild(p);
     name.value = '';
     comment.value = '';
-    updateCommentCount(commentList, commentsHeader, true);
+    updateCommentCount(
+      { formattedDate, name: name.value, comment: comment.value },
+      commentsHeader,
+      true,
+    );
   });
 
   commentForm.appendChild(addButton);
