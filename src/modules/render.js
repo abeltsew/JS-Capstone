@@ -19,7 +19,7 @@ const renderMeal = async (item) => {
       </h5>
       
      <button class="btn-like" id= "${item.idMeal}">
-      <i class="far fa-heart fa-2x"></i><span id= "likes${item.idMeal}">10</span>
+      <i class="far fa-heart fa-2x"></i><span id= "likes${item.idMeal}">0</span>
         </button>
   
     </div>

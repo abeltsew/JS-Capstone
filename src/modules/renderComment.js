@@ -4,14 +4,21 @@ import getItemComments from './getCommentItems.js';
 let commentList = [];
 
 export const updateCommentCount = (comment, commentsHeader, add) => {
-  if (comment) {
+  if (!comment.error && add !== true) {
     commentsHeader.innerHTML = `comments (${comment.length})`;
+  } else if (add === undefined) {
+    commentsHeader.innerHTML = 'comments (0)';
   }
   if (add) {
-    commentsHeader.innerHTML = `comments (${
-      (comment.length ? comment.length : 0) + 1
-    })`;
-    commentList = [...commentList, comment];
+    if (!comment.error) {
+      commentsHeader.innerHTML = `comments (${
+        (comment.length ? comment.length : 0) + 1
+      })`;
+      commentList.push(comment);
+    } else {
+      commentList.push('comment');
+      commentsHeader.innerHTML = `comments (${commentList.length})`;
+    }
   }
 };
 
@@ -50,14 +57,15 @@ export default (item) => {
   commentUI.appendChild(commments);
 
   getItemComments(item).then((comment) => {
-    commentList = comment;
+    // eslint-disable-next-line
+    !comment.error ? (commentList = comment) : [];
     updateCommentCount(comment, commentsHeader);
 
     comment?.forEach((comment) => {
       const p = document.createElement('p');
       const { creation_date: date, username, comment: commentText } = comment;
       // eslint-disable-next-line
-      p.innerHTML = date + username + ':' + commentText;
+      p.innerHTML = date + ' ' + '👤' + username + ' 💬 ' + commentText;
       commments.appendChild(p);
     });
   });
@@ -105,12 +113,11 @@ export default (item) => {
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
-    p.innerHTML = `${formattedDate} ${name.value}:${comment.value}`;
+    p.innerHTML = `${formattedDate} 👤 ${name.value} 💬 ${comment.value}`;
     commments.appendChild(p);
-
-    updateCommentCount(commentList, commentsHeader, true);
     name.value = '';
     comment.value = '';
+    updateCommentCount(commentList, commentsHeader, true);
   });
 
   commentForm.appendChild(addButton);
